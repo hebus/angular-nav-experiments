@@ -1,9 +1,9 @@
-nav {
+.my-nav {
   position: relative;
   min-width: 350px;
   min-height: 80px;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(var(--cols), 1fr);
   border-radius: 10px;
   padding: 0 15px;
   background: black;
@@ -12,7 +12,7 @@ nav {
   overflow: hidden;
 }
 
-nav .tubelight {
+.my-nav .tubelight {
   --left: -99px;
   position: absolute;
   left: var(--left);
@@ -25,7 +25,7 @@ nav .tubelight {
   transition: left 400ms ease;
   z-index: 10;
 }
-nav .tubelight .light-ray {
+.my-nav .tubelight .light-ray {
   position: absolute;
   left: -30%;
   top: 5px;

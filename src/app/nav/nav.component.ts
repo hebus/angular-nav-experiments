@@ -1,4 +1,5 @@
 import {
+    AfterViewInit,
   Component,
   ContentChildren,
   ElementRef,
@@ -12,11 +13,15 @@ import { NavLinkComponent } from './nav-link.component';
   templateUrl: 'nav.component.html',
   styleUrls: ['nav.component.css'],
 })
-export class NavComponent {
+export class NavComponent implements AfterViewInit {
   @ContentChildren(NavLinkComponent) links: QueryList<NavLinkComponent>;
   @ViewChild('tubelight', { static: true }) light: ElementRef<HTMLElement>;
 
-  private prevIndex = 0;
+  constructor(private el: ElementRef<HTMLElement>) {}
+
+  ngAfterViewInit(): void {
+    this.el.nativeElement.style.setProperty('--cols', this.links.length.toString());
+  }
 
   /**
    * move the light div toward the current selection
@@ -34,8 +39,7 @@ export class NavComponent {
    * Remove .active class from previous selection
    */
   activeMe(index: number) {
-    this.links.get(this.prevIndex).host.nativeElement.classList.remove('active');
+    this.links.forEach(link => link.host.nativeElement.classList.remove('active'));
     this.links.get(index).host.nativeElement.classList.add('active');
-    this.prevIndex = index;
   }
 }
