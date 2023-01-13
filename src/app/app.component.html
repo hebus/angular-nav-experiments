@@ -1,0 +1,18 @@
+<nav-root #nav0>
+  <nav-link *ngFor="let item of items; let i=index" (click)="nav0.activeMe(i)" icon="lni lni-{{ item }}"></nav-link>
+</nav-root>
+
+<br/>
+
+<nav-root #nav2>
+  <nav-link *ngFor="let item of items; let i=index" (click)="nav2.activeMe(i)" icon="lni lni-{{ item }}"></nav-link>
+</nav-root>
+
+<br/>
+
+<nav-root #nav1>
+  <nav-link (click)="nav1.activeMe(0)" icon="lni lni-home"></nav-link>
+  <nav-link (click)="nav1.activeMe(1)" icon="lni lni-bookmark"></nav-link>
+  <nav-link (click)="nav1.activeMe(2)" icon="lni lni-user"></nav-link>
+  <nav-link (click)="nav1.activeMe(3)" icon="lni lni-cart"></nav-link>
+</nav-root>
